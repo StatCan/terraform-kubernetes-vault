@@ -27,7 +27,7 @@ module "helm_vault" {
 
   helm_service_account = "tiller"
   helm_namespace = "cloudops"
-  helm_repository = "artifactory"
+  helm_repository = "stable"
 
   values = <<EOF
 
