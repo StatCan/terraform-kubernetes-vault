@@ -9,6 +9,12 @@ resource "null_resource" "dependency_getter" {
   triggers = {
     my_dependencies = "${join(",", var.dependencies)}"
   }
+
+  lifecycle {
+    ignore_changes = [
+      triggers["my_dependencies"],
+    ]
+  }
 }
 
 resource "null_resource" "wait-dependencies" {
@@ -23,12 +29,12 @@ resource "null_resource" "wait-dependencies" {
 
 resource "helm_release" "vault" {
   depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
-  name = "vault"
+  name       = "vault"
   repository = "${var.helm_repository}"
-  chart = "vault"
-  version = "${var.chart_version}"
-  namespace = "${var.helm_namespace}"
-  timeout = 1200
+  chart      = "vault"
+  version    = "${var.chart_version}"
+  namespace  = "${var.helm_namespace}"
+  timeout    = 1200
 
   values = [
     "${var.values}",
