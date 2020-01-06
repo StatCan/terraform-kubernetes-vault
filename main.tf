@@ -29,9 +29,9 @@ resource "null_resource" "wait-dependencies" {
 
 resource "helm_release" "vault" {
   depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
-  name       = "vault"
+  name       = "${var.helm_release_name}"
   repository = "${var.helm_repository}"
-  chart      = "vault"
+  chart      = "${var.helm_chart}"
   version    = "${var.chart_version}"
   namespace  = "${var.helm_namespace}"
   timeout    = 1200
