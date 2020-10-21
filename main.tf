@@ -18,13 +18,17 @@ resource "null_resource" "dependency_getter" {
 }
 
 resource "helm_release" "vault" {
-  depends_on = ["null_resource.dependency_getter"]
-  name       = "${var.helm_release_name}"
-  repository = "${var.helm_repository}"
-  chart      = "${var.helm_chart}"
-  version    = "${var.chart_version}"
-  namespace  = "${var.helm_namespace}"
-  timeout    = 1200
+  depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
+  name       = var.helm_release_name
+
+  repository          = var.helm_repository
+  repository_username = var.helm_repository_username
+  repository_password = var.helm_repository_password
+
+  chart     = var.helm_chart
+  version   = var.chart_version
+  namespace = var.helm_namespace
+  timeout   = 1200
 
   values = [
     "${var.values}",
