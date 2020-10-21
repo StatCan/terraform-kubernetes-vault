@@ -59,3 +59,4 @@ EOF
 | 20190909 | 20190909.1 | 1st release                                         |
 | 20200620 | v2.0.0     | Module now modified for Helm 3                      |
 | 20201013 | v2.0.1     | Add the ability to specify a username and password. |
+| 20201020 | v2.0.2     | Remove a dependency that didn't exist.              |

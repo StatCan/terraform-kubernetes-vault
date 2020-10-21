@@ -18,7 +18,7 @@ resource "null_resource" "dependency_getter" {
 }
 
 resource "helm_release" "vault" {
-  depends_on = ["null_resource.wait-dependencies", "null_resource.dependency_getter"]
+  depends_on = ["null_resource.dependency_getter"]
   name       = var.helm_release_name
 
   repository          = var.helm_repository
