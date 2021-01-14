@@ -26,7 +26,7 @@ module "helm_vault" {
 
   chart_version = "0.0.5"
   dependencies = [
-    "${module.namespace_cloudops.depended_on}",
+    module.namespace_cloudops.depended_on,
   ]
 
   helm_namespace = "cloudops"
@@ -60,3 +60,4 @@ EOF
 | 20200620 | v2.0.0     | Module now modified for Helm 3                      |
 | 20201013 | v2.0.1     | Add the ability to specify a username and password. |
 | 20201020 | v2.0.2     | Remove a dependency that didn't exist.              |
+| 20210114 | v2.0.3     | Remove interpolation syntax                         |
