@@ -31,7 +31,7 @@ resource "helm_release" "vault" {
   timeout   = 1200
 
   values = [
-    "${var.values}",
+    var.values,
   ]
 
 }
