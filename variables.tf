@@ -18,11 +18,7 @@ variable "helm_repository_username" {
 
 variable "chart_version" {}
 
-variable "dependencies" {
-  type = "list"
-}
-
 variable "values" {
   default = ""
-  type    = "string"
+  type    = string
 }
