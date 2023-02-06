@@ -22,7 +22,7 @@ The following security controls can be met through configuration of this templat
 
 ```terraform
 module "helm_vault" {
-  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-vault?ref=v3.0.0"
+  source = "git::https://github.com/canada-ca-terraform-modules/terraform-kubernetes-vault?ref=v3.0.1"
 
   chart_version = "0.0.5"
   depends_on = [
@@ -61,3 +61,4 @@ EOF
 | 20201020 | v2.0.2     | Remove a dependency that didn't exist.              |
 | 20210114 | v2.0.3     | Remove interpolation syntax                         |
 | 20210824 | v3.0.0     | Update module for Terraform v0.13                   |
+| 20230203 | v3.0.1     | Specify sensitive variables                         |
